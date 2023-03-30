@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#define size 30
+#define size 30 //papop36
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -84,7 +84,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+    HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -407,22 +407,34 @@ float RPS_Calc(){
 
 void MotorSpeedChange(){
 	diffspeed = MotorReadRPM - MotorSetRPM;
-	if (MotorSetDuty >= 100) {
-		MotorSetDuty = 100;
-		if (diffspeed >= 5.0) {
-			MotorSetDuty -= 4;
-		}
-		if (diffspeed >= 2.0 && diffspeed < 5.0) {
-			MotorSetDuty -= 2;
-		}
-		if (diffspeed >= 0.1 && diffspeed < 2.0) {
-			MotorSetDuty -= 1;
-		}
-		if (diffspeed > -0.1 && diffspeed < 0.1) {
-			MotorSetDuty += 0;
-		}
-	} else if (MotorSetDuty <= 0) {
-		MotorSetDuty = 1;
+//	if (MotorSetDuty >= 100) {
+//		MotorSetDuty = 100;
+//		if (diffspeed >= 5.0) {
+//			MotorSetDuty -= 4;
+//		}
+//		if (diffspeed >= 2.0 && diffspeed < 5.0) {
+//			MotorSetDuty -= 2;
+//		}
+//		if (diffspeed >= 0.1 && diffspeed < 2.0) {
+//			MotorSetDuty -= 1;
+//		}
+//		if (diffspeed > -0.1 && diffspeed < 0.1) {
+//			MotorSetDuty += 0;
+//		}
+//	} else if (MotorSetDuty <= 0) {
+//		MotorSetDuty = 1;
+//		if (diffspeed <= -5.0) {
+//			MotorSetDuty += 4;
+//		}
+//		if (diffspeed <= -2.0 && diffspeed > -5.0) {
+//			MotorSetDuty += 2;
+//		}
+//		if (diffspeed <= -0.1 && diffspeed > -2.0) {
+//			MotorSetDuty += 1;
+//		}
+//		if (diffspeed > -0.1 && diffspeed < 0.1)
+//			MotorSetDuty += 0;
+//	} else {
 		if (diffspeed <= -5.0) {
 			MotorSetDuty += 4;
 		}
@@ -434,18 +446,6 @@ void MotorSpeedChange(){
 		}
 		if (diffspeed > -0.1 && diffspeed < 0.1)
 			MotorSetDuty += 0;
-	} else {
-		if (diffspeed <= -5.0) {
-			MotorSetDuty += 4;
-		}
-		if (diffspeed <= -2.0 && diffspeed > -5.0) {
-			MotorSetDuty += 2;
-		}
-		if (diffspeed <= -0.1 && diffspeed > -2.0) {
-			MotorSetDuty += 1;
-		}
-		if (diffspeed > -0.1 && diffspeed < 0.1)
-			MotorSetDuty += 0;
 		if (diffspeed >= 5.0) {
 			MotorSetDuty -= 4;
 		}
@@ -455,7 +455,7 @@ void MotorSpeedChange(){
 		if (diffspeed >= 0.1 && diffspeed < 2.0) {
 			MotorSetDuty -= 1;
 		}
-	}
+
 }
 
 /* USER CODE END 4 */
